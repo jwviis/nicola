@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 50px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .balloon {
+            position: fixed;
+            width: 60px;
+            height: 75px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .accordion {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 0;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #ff8fb8 0%, #d55a80 100%);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            padding: 0 20px;
+            background: white;
+        }
+.scroll-area {
+    max-height: 400px;     /* wysokość okienka na zdjęcia */
+    overflow-y: auto;      /* pionowe przewijanie */
+    padding-right: 10px;   /* żeby scroll nie nachodził na zdjęcia */
+}
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 20px;
+        }
+
+        .accordion-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+      .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;    /* kluczowe – ustawia proporcje zdjęć */
+    object-fit: cover; 
+    border-radius: 10px;
+    border: 2px solid #ff6b9d;
+    display: block;
+}
+
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">HAPPY BIRTHDAY! 🎉</h1>
+    
+    <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion('accordion1')">
+            Nasze poznanie ❤️
+        </div>
+        <div class="accordion-content" id="accordion1">
+            <p class="accordion-text">
+                  Niby banalne poznanie ale charakterystyczne..<br><br>
+                
+                Poznałyśmy się dlatego, że dołączyłam do twojej klasy.
+                  I tak sobie czasem myślę, że gdyby Blanka wtedy nie przyszła do naszej klasy,
+                  a Julka dalej by cię omijała, to możliwe,
+                  że w ogóle byśmy się nie zaprzyjaźniły.
+                  Urodziny są co roku, ale przez cały rok można robić wiele rzeczy,
+                  żeby ten dzień był jeszcze lepszy. Gdyby 16 lat temu,
+                  o 9:25, twoja mama cię nie urodziła, nie byłoby dziś czego wspominać.
+                  Mimo że nasza relacja różnie przebiega, 
+                  zawsze będziesz dla mnie ważna — nawet za 20 lat,
+                  nawet jeśli nie będziemy już miały kontaktu.
+                  Z okazji twoich urodzin chciałabym życzyć ci więcej wiary w siebie oraz cechy, 
+                  która pomoże ci łatwiej mówić o swoich problemach.💕
+            </p>
+        </div>
+    </div>
+
+   <div class="accordion">
+    <div class="accordion-header" onclick="toggleAccordion('accordion2')">
+       Fotki 📸
+    </div>
+    <div class="accordion-content" id="accordion2">
+       <div class="scroll-area">
+           <div class="photo-grid">
+               <img src="img/zdjecie1.jpg" class="photo-placeholder">
+               <img src="img/zdjecie2.jpg" class="photo-placeholder">
+               <img src="img/zdjecie3.jpg" class="photo-placeholder">
+               <img src="img/zdjecie4.jpg" class="photo-placeholder">
+               <img src="img/zdjecie5.jpg" class="photo-placeholder">
+               <img src="img/zdjecie6.jpg" class="photo-placeholder">
+               <img src="img/zdjecie7.jpg" class="photo-placeholder">
+               <img src="img/zdjecie8.jpg" class="photo-placeholder">
+               <img src="img/zdjecie9.jpg" class="photo-placeholder">
+               <img src="img/zdjecie10.jpg" class="photo-placeholder">
+               <img src="img/zdjecie11.jpg" class="photo-placeholder">
+               <img src="img/zdjecie12.jpg" class="photo-placeholder">
+               <img src="img/zdjecie13.jpg" class="photo-placeholder">
+               <img src="img/zdjecie14.jpg" class="photo-placeholder">
+               <img src="img/zdjecie15.jpg" class="photo-placeholder">
+           </div>
+       </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            
+            const colors = ['#ff6b9d', '#c44569', '#f8b500', '#a29bfe', '#fd79a8'];
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            balloon.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+            }, 8000);
+        }
+
+        setInterval(createBalloon, 800);
+        
+        for(let i = 0; i < 5; i++) {
+            setTimeout(createBalloon, i * 200);
+        }
+    </script>
+</body>
+</html>
